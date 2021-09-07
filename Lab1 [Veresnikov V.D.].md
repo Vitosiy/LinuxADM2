@@ -59,13 +59,13 @@
     [mydemon](mydemon.sh?raw=true) - Изменяем скрипт demon.sh 
 
 	Создаём файл описания модуля /etc/systemd/system/mydemon.sevice:
-
+	```
 	[Unit]
 	Description=Clear logs
 
 	[Service]
 	ExecStart=/opt/mydemon.sh
-
+	```
 	Проверяем, что модуль работает, просматриваем статус службы systemctl status mydemon.service,
 	запускаем сервис systemctl start mydemon.service:
 
@@ -76,7 +76,7 @@
 4.  Написать timer для systemd который раз в 5 минут пишет что-либо в лог файл:
 
 	Создаем файл /etc/systemd/system/mytimer.timer:
-
+	```
 	[Unit]
 	Description=Clear log every 5 min
 
@@ -86,15 +86,15 @@
 
 	[Install]
 	WantedBy=timers.target
-
+	```
 	Создаем файл /etc/systemd/system/mytimer.service:
-
+	```
 	[Unit]
 	Description=Clear logs
 
 	[Service]
 	ExecStart=/opt/mydemon.sh
-
+	```
 	Запускаем таймер systemctl start mytimer.timer и проверяем список таймеров в системе systemctl list-timers:
 
 	![pic5](pic5.png?raw=true)
